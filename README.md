@@ -45,11 +45,51 @@ terminal 3 を rqt に変えると PID ゲインの調整等が出来る
 ```
 roslaunch sixdofarm_moveit_config sixdofarm_moveit.launch
 ```
-Gazerbo と rviz が同時に立ち上がり, Start State と Goal State を指定して Plan&Execute を押すと Gazebo 上のモデルも同じように動く
-
-
-
-
+Gazebo と rviz が同時に立ち上がり, Start State と Goal State を指定して Plan&Execute を押すと Gazebo 上のモデルも同じように動く
+<br /> 
+<br /> 
+<br /> 
+## Gazebo 上での移動ロボットモデルの構築
+```
+roslaunch wheel_robot wheel_robot.launch
+```
+Gazebo 上に 4 輪モデルが表示される
+<br /> 
+<br /> 
+<br /> 
+terminal 1
+```
+roslaunch wheel_robot wheel_robot_control.launch
+```
+terminal 2
+```
+rqt
+```
+terminal 1 で Gazebo と rviz が起動し，terminal 2 の rqt で 4 輪モデルを動かすことが出来る
+<br /> 
+<br /> 
+<br /> 
+## 移動ロボットで地図を作成(slam gmapping)
+terminal 1
+```
+roslaunch wheel_robot wheel_robot.launch
+```
+terminal 2
+```
+roslaunch wheel_robot_gmapping wheel_robot_gmapping.launch
+```
+terminal 3
+```
+rqt
+```
+terminal 4
+```
+rviz
+```
+terminal 1 で Gazebo が起動する  
+地図作成するために Gazebo 上にオブジェクトを配置しておく  
+terminal 2 で地図を作製するための launch ファイルが立ち上がる  
+rviz に Add → RobotModel,Map を追加し，rqtで動かして出来上がる地図を確認しながら地図を作製していく
 
 
 
