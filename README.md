@@ -89,8 +89,67 @@ rviz
 terminal 1 で Gazebo が起動する  
 地図作成するために Gazebo 上にオブジェクトを配置しておく  
 terminal 2 で地図を作製するための launch ファイルが立ち上がる  
-rviz に Add → RobotModel,Map を追加し，rqtで動かして出来上がる地図を確認しながら地図を作製していく
-
-
-
-
+rviz に Add → RobotModel，Map を追加し，rqtで動かして出来上がる地図を確認しながら地図を作製していく
+<br /> 
+<br /> 
+<br /> 
+```
+rosrun map_server map_saver -f test
+```
+地図を保存したいディレクトリに移動し，実行する  
+test は好きなファイル名
+<br /> 
+<br /> 
+<br /> 
+## 差動2輪移動ロボットの作り方
+```
+roslaunch diff_mobile_robot diff_mobile_gazebo.launch
+```
+部屋の中に置かれた 2 輪モデルが Gazebo 上に表示される
+<br /> 
+<br /> 
+<br /> 
+## 差動2輪移動ロボットのナビゲーション
+terminal 1
+```
+roslaunch diff_mobile_robot diff_mobile_gazebo.launch
+```
+terminal 2
+```
+roslaunch diff_mobile_robot amcl.launch
+```
+terminal 3
+```
+rviz
+```
+terminal 4
+```
+rqt
+```
+terminal 1 で Gazebo が起動する  
+terminal 2 でナビゲーション用の launch ファイルが起動する  
+terminal 3 で rviz を起動し，Add → RobotModel，Map，PoseArray を追加する  
+Map の Topic を/map に，PoseArray の Topic を particlecloud に変更する  
+rqt でロボットを動かすとパーティクルの矢印が収束することが分かる
+<br /> 
+<br /> 
+<br /> 
+terminal 1
+```
+roslaunch diff_mobile_robot diff_mobile_gazebo.launch
+```
+terminal 2
+```
+roslaunch diff_mobile_robot gmapping.launch
+```
+terminal 3
+```
+rviz
+```
+terminal 4
+```
+roslaunch diff_mobile_robot diff_mobile_robot_nav.launch
+```
+terminal 3 で rviz を起動し，Add → RobotModel，Map を追加する  
+Map の Topic を/map に変更する  
+terminal 4 を実行すると，作成した waypoint に従って 2 輪モデルが動き出す
