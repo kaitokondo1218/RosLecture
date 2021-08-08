@@ -12,7 +12,7 @@ rviz
 Fixed Frame を map から base に変更
 rvizにAdd → RobotModelを追加  
 スライダーを動かすとロボットの関節を自由に動かすことが出来る
-<br> 
+<br /> 
 ```
 roslaunch sixdofarm_moveit_config demo.launch
 ```
