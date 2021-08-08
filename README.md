@@ -11,5 +11,6 @@ rviz
 ```
 1. Fixed Frame を map から base に変更
 2. Add  → RobotModel  
+
 スライダーを動かすとロボットの関節を自由に動かすことが出来る．
 
